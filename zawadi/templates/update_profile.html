@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container">
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav" id="my" role="tablist">
+      <li>
+      </li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <div class="flex">
+      <div>
+        <img src="{{user.profile.profile_pic.url}}" class="rounded-circle border" alt="img" width="80" height="80">
+      </div>
+      <div>
+        <h2 class="text-monospace ml-3 pt-2"><small><strong>{{user.username}}</strong></small></h2>
+      </div>
+      </div>
+      <hr>
+
+      <div class="container">
+        <form action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <label for="" class="border-bottom mb-4 text-center">EDIT PROFILE</label>
+            {{u_form|crispy}}
+            {{p_form|crispy}}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+          </div>
+        </form>  
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

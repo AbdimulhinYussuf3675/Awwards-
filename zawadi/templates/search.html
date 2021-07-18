@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="templates d-flex flex-row">
+    {% for project in searched_projects %}
+
+    <div class="col-md-4 mt-4">
+        <div class="card profile-card-5">
+            <div class="card-img-block">
+                <img class="card-img-top"
+                     src="{{project.image.url}}"
+                     alt="Card image cap">
+            </div>
+            <div class="card-body pt-0">
+                <h5 class="card-title">{{project.title}}</h5>
+                <p class="card-text">{{project.decription}}</p>
+                <a href="{{project.site}}"
+                   class="btn btn-primary">Go to site</a>
+            </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+</div>
+{% endblock content %}

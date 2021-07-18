@@ -1,0 +1,59 @@
+<!--Navbar -->
+<nav class="navbar navbar-expand-sm navbar-dark default-color">
+  <a class="navbar-brand" href="/">Wards</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0 ml-auto" action="{% url 'search' %}" method="GET"
+      enctype="multipart/form-data">
+      <input class="form-control" name="title" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+    </form>
+
+    <div class="col-sm-6 col-md-6">
+      {% if user.is_authenticated %}
+      <ul class=" d-flex justify-content-end list-unstyled">
+
+        <li class="d-flex justify-content-end">
+          <a href="/submit"><button class="btn btn-outline-white btn-md" type="submit">Add Project</button></a>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+            aria-expanded="false">Account
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="{% url 'profile' %}">Profile</a>
+            </li>
+            <li>
+              <a href="/accounts/password/change">Change Password</a>
+            </li>
+            <li>
+              <a href="/logout">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      {% else %}
+      <li>
+        <a class='btn btn-default' href="/accounts/login">Login</a>
+      </li>
+
+      {% endif %}
+
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</nav>
+<!--/.Navbar -->

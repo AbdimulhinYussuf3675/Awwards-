@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<style>
+    img{
+        opacity:0.8;
+    }
+    img:hover{
+        opacity:1.0;
+    }
+    .card:hover{
+        box-shadow:2px 2px 5px #504658;
+    }
+    .lp{
+        background-image: url("https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_270377375.jpg");
+        background-size:cover;
+        background-color: #5f6769;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:500px;
+    }
+    .overlay{
+        height:500px;
+        background-color: rgb(0,0,0,0.4);
+    }
+    .lp:hover > .overlay {
+        background-color:#000;
+        opacity:0.5;
+    }
+    .text{
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+    p.p{
+        margin-left: 0% important!;
+    }
+    hr{
+        color:white;
+    }
+</style>
+<div class="lp">
+    <div class="overlay">
+   <div class="text">
+        <h1 class="text-white">WE ALL NEED AN AWARD!</h1>
+        <hr>
+    </div>
+    </div>
+</div>
+<div class="container-fluid mt-4">
+    <div class="row">
+        {% if projects%}
+        {% for project in projects %}
+        <div class="col-md-4">
+            <div class="card card-default">
+                <div class="card-heading inline">
+                    <div class="row">
+                        <div class="col-md-4 mt-2 mb-2 text-center">
+                            <a href="{%url 'profile' %}" style="color:black;">
+                                <img src="{{user.profile.profile_pic.url}}" class="img-responsive rounded-circle" style="width:50px; height:50px;" alt="profile image">
+                            </a>
+                        </div>
+                        <div class="col-md-8 mt-2 mb-2">
+                            <a href="{%url 'profile' %}">{{project.user}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <div class=" view overlay zoom" style="height: 245px; padding:2%;">
+                        <a href="{{project.site}}">
+                            <img src="{{project.image.url}}" class="img-responsive" style="height: 250px;" width="100%" alt="project lp">
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <h5>{{project.title}}</h5>
+                </div>
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No Projects have been posted for view yet</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

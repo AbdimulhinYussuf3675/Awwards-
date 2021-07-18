@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<style>
+  .row1,
+  .row2 {
+    display: flex;
+  }
+</style>
+
+<div class="container">
+  <div class="row mb-4 pt-4">
+    <div class="col-sm-4">
+      <img src="{{user.profile.profile_pic.url}}" alt="{{user.profile_pic.url}}" width="200" height="200"
+        class="rounded-circle account-img">
+    </div>
+    <div class="col-sm-8">
+      <section>
+        <div class="row1">
+          <h3 class="text-monospace">{{user.username}}</h3>
+          <a href="{% url 'update_profile' %}">
+            <button class="btn btn-info ml-4 pl-3">Edit</button>
+          </a>
+        </div>
+        <div class="row2 mt-3">
+          <p class="text-monospace">{{projects|length}} posts</p>
+        </div>
+        <div class="row3 mt-3">
+          <p class="text-monospace font-weight-bold">BIO</p>
+          <p class="text-monospace">{{user.profile.bio}}</p>
+        </div>
+      </section>
+      <div class="container-fluid">
+        <div class="card-columns" style="display: flex; flex-wrap: wrap;">
+          {% for project in projects %}
+          <img src="{{project.image.url}}" alt="" class="mr-2 mt-2" style="height: 250px; width:300px;">
+          {% endfor %}
+        </div>
+      </div>
+      {% endblock %}
