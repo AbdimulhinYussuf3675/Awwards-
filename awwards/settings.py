@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zawadi',
-    'cloudinary'
+    'bootstrap3',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
@@ -122,10 +121,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-cloudinary.config( 
-  cloud_name = "adam-gallery", 
-  api_key = "199971389876536", 
-  api_secret = "SzFdNlJfU8mkExnVS8m6K0ncpE0",
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
 )
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
