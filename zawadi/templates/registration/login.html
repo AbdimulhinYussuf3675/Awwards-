@@ -1,0 +1,45 @@
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{% block content %}
+<body class="body" style="background-image:url('https://data.whicdn.com/images/318237562/superthumb.jpg?t=1535097941')">
+  
+
+<div class="container">
+  <div class="row">
+    <!-- Empty div -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      {% if form.errors %}
+        <p> Password or Username is incorrect </p>
+      {% endif %}
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="text-center">Sign In</h3>
+        </div>
+        <div class="panel-body">
+
+          <form  action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+            </div>
+            <input type="hidden" name="next" value="{{next}}">
+          </form>
+          <div class="acc-status-check">
+              <p>Don't have an account? <a href="/accounts/register">Sign Up</a></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- empty div -->
+    <div class="col-md-4"></div>
+  </div>
+</div>
+</body>
+
+{% endblock %}
