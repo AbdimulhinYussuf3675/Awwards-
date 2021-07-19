@@ -4,7 +4,7 @@
 ### [Abdimulhin Adan](https://github.com/AbdimulhinYussuf3675)
 
 ## Description
-This is a web application that allows a user to post a project they have created and get it reviewed by his/her peers.
+This is a web application that allows a user to post a project they have created and get it reviewed by his/her pairs.
 
 
 ## User stories
