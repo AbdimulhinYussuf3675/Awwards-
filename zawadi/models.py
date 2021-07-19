@@ -9,7 +9,7 @@ from django_countries.fields import CountryField
 # Create your models here.
 
 class Profile(models.Model):
-  profile_pic = models.ImageField(default='../static/images/default.jpg',upload_to='media/')
+  profile_pic = models.ImageField(default='../static/images/defaul.jpg',upload_to='media/')
   bio = models.TextField()
   user = models.OneToOneField(User,on_delete = models.CASCADE)
   
