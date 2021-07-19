@@ -4,6 +4,7 @@ import datetime as dt
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django_countries.fields import CountryField
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -24,7 +25,7 @@ class Profile(models.Model):
     
 class Projects(models.Model):
     title = models.CharField(max_length=30)
-    image = models.ImageField(upload_to='media/')
+    image = CloudinaryField('image')
     project_description = models.TextField()
     user = models.ForeignKey(User,on_delete=models.CASCADE, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
