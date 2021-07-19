@@ -34,11 +34,6 @@ cd Awwards
 ```
 
 ##### 2. Create a virtual environment
- Install  `Virtualenv`
-
-   ```prettier
-   python3 -m venv venv
-   ```
 
 To create a virtual environment named `virtual`, run
 
