@@ -14,6 +14,9 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 
@@ -60,6 +63,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'django_countries',
     'crispy_forms',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -157,3 +161,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
 
+cloudinary.config( 
+  cloud_name = "adam-gallery", 
+  api_key = "199971389876536", 
+  api_secret = "SzFdNlJfU8mkExnVS8m6K0ncpE0",
+)
