@@ -67,7 +67,6 @@ You'll need to create a new postgress database, Type the following command to ac
     $ psql
    ```
    Then run the following query to create a new database named ```awards```
-   ```
    # create database awards
 
 
