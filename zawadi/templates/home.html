@@ -2,33 +2,39 @@
 {% block content %}
 {{block.super}}
 <style>
-    img{
-        opacity:0.8;
+    img {
+        opacity: 0.8;
     }
-    img:hover{
-        opacity:1.0;
+
+    img:hover {
+        opacity: 1.0;
     }
-    .card:hover{
-        box-shadow:2px 2px 5px #504658;
+
+    .card:hover {
+        box-shadow: 2px 2px 5px #504658;
     }
-    .lp{
-        background-image: url("https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_270377375.jpg");
-        background-size:cover;
-        background-color: #5f6769;
+
+    .lp {
+        background-image: url("https://images.unsplash.com/photo-1623279568205-2ffd268974c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+        background-size: cover;
+        background-color: #e7edee;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height:500px;
+        height: 500px;
     }
-    .overlay{
-        height:500px;
-        background-color: rgb(0,0,0,0.4);
+
+    .overlay {
+        height: 500px;
+        background-color: rgb(0, 0, 0, 0.4);
     }
-    .lp:hover > .overlay {
-        background-color:#000;
-        opacity:0.5;
+
+    .lp:hover>.overlay {
+        background-color: #000;
+        opacity: 0.5;
     }
-    .text{
+
+    .text {
         text-align: center;
         position: absolute;
         top: 50%;
@@ -36,19 +42,21 @@
         transform: translate(-50%, -50%);
         color: white;
     }
-    p.p{
-        margin-left: 0% important!;
+
+    p.p {
+        margin-left: 0% important !;
     }
-    hr{
-        color:white;
+
+    hr {
+        color: white;
     }
 </style>
 <div class="lp">
     <div class="overlay">
-   <div class="text">
-        <h1 class="text-white">WE ALL NEED AN AWARD!</h1>
-        <hr>
-    </div>
+        <div class="text">
+            <h1 class="text-white" style="font-size: 50px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-style: italic;">Award Your Project Today </h1>
+            <hr>
+        </div>
     </div>
 </div>
 <div class="container-fluid mt-4">
@@ -61,27 +69,66 @@
                     <div class="row">
                         <div class="col-md-4 mt-2 mb-2 text-center">
                             <a href="{%url 'profile' %}" style="color:black;">
-                                <img src="{{user.profile.profile_pic.url}}" class="img-responsive rounded-circle" style="width:50px; height:50px;" alt="profile image">
+                                <img src="{{user.profile.profile_pic.url}}" class="img-responsive rounded-circle"
+                                    style="width:50px; height:50px;" alt="profile image">
                             </a>
                         </div>
                         <div class="col-md-8 mt-2 mb-2">
                             <a href="{%url 'profile' %}">{{project.user}}</a>
+
                         </div>
                     </div>
                 </div>
                 <div class="card-title">
                     <div class=" view overlay zoom" style="height: 245px; padding:2%;">
                         <a href="{{project.site}}">
-                            <img src="{{project.image.url}}" class="img-responsive" style="height: 250px;" width="100%" alt="project lp">
+                            <img src="{{project.image.url}}" class="img-responsive" style="height: 250px;" width="100%"
+                                alt="project lp">
                         </a>
                     </div>
                 </div>
                 <div class="card-footer">
                     <h5>{{project.title}}</h5>
                 </div>
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js">
+                </script>
+                <div class="padding">
+                    <div class="col-md-6">
+                        <div class="box box-orange box-example-1to10">
+                            <div class="box-header">1/10 Rating</div>
+                            <div class="box-body"> <select id="example-1to10" name="rating" autocomplete="off">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7" selected="selected">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select> </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <br>
         </div>
+
+        <script>
+            $(function () {
+                function ratingEnable() {
+                    $('#example-1to10').barrating('show', {
+                        theme: 'bars-1to10'
+                    });
+
+
+                }
+
+                ratingEnable();
+            });
+        </script>
         {% endfor %}
         {% else %}
         <p>No Projects have been posted for view yet</p>
