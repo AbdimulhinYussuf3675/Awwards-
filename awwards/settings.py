@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'zawadi',
     'bootstrap3',
     'django_countries',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
